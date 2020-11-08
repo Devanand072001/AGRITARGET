@@ -1,0 +1,39 @@
+<html>
+
+<head>
+    <title>Pest</title>
+
+</head>
+
+<body style="text-align:center;background-color:#D1F2EB;">
+    <h1 style="font-family:algerian;background-color:#17A589;color:white">Pest and Control Measures</h1>
+    {% if data.im1 is defined %}
+<img src="{{ url_for('static', filename='images/'+data.im1) }}" alt="no image" width="1200" height="150">
+    <br><br>
+    <table align="center" style="width:50%;font-family:algerian;text-align:center;color:black;font-size: 20px;">
+        <tr>
+            <th></th>
+            <th>Pests</th>
+            <th>Pesticide</th>
+            <th>Images</th>
+        </tr>
+
+        {% for pest,pesticide in data.pest.items() %}
+        <tr>
+            <td>{{loop.index}}</td>
+            <td>{{pest}}</td>
+            <td>{{pesticide}}</td>
+            <td><img src="{{ url_for('static', filename='images/'+crop+'/'+pest+'.jpg') }}" alt="no image" width="200" height="150"></td>
+        </tr>
+        {% endfor %}
+    
+    </table>
+    <br><br>
+    {% else %}
+        <p> No data found </p>
+    {% endif %}
+    <p style="font-family:algerian;color:Indigo"><a href="{{url_for('main.crop_detail', crop=crop)}}">Click for Back</a></p>
+  <a href="{{url_for('main.crop_detail', crop=crop)}}"><img src="{{url_for('static', filename='images/rice/back.jpg')}}" alt="no image" width="60" height="60"></a>
+</body>
+
+</html>

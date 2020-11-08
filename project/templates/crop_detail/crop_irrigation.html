@@ -1,0 +1,45 @@
+<html>
+
+<head>
+  <title>Irrigation</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    .checked {
+      color: orange;
+    }
+  </style>
+</head>
+
+<body style="text-align:center;background-color:#D1F2EB">
+  <h1 style="font-family:algerian;background-color:#17A589;color:white">Irrigation</h1>
+  {% if data.im1 is defined %}
+  <img src="{{ url_for('static', filename='images/'+data.im1) }}" alt="no image" width="1200" height="150">
+  <br><br>
+  <table align="center" style="color:black;font-size: 20px;">
+    <tr>
+      <td>Maximum Water Requirement</td>
+      <td>: {{data.max_water}}</td>
+    </tr>
+    <tr>
+      <td><br>Minimum Water Requirement</td>
+      <td><br>: {{data.min_water}}</td>
+    </tr>
+    <tr>
+      <td><br>Annual Rainfall Required</td>
+      <td><br>: More Than {{data.annual_rainfall}} cm</td>
+    </tr>
+  </table>
+  <br><br><br>
+
+  {% else %}
+
+  <p>No Data found</p>
+
+  {% endif %}
+
+  <br><br>
+  <p style="font-family:algerian;color:Indigo"><a href="{{url_for('main.crop_detail', crop=crop)}}">Click for Back</a></p>
+  <a href="{{url_for('main.crop_detail', crop=crop)}}"><img src="{{url_for('static', filename='images/rice/back.jpg')}}" alt="no image" width="60" height="60"></a>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<html>
+
+<head>
+    <title>Diseases</title>
+</head>
+
+<body style="text-align:center;background-color:#D1F2EB ;">
+    <h1 style="font-family:algerian;background-color:#17A589;color:white">Diseases and Prevention Methods</h1>
+    {% if data.im1 is defined %}
+    <img src="{{ url_for('static', filename='images/'+data.im1) }}" alt="no image" width="1200" height="150">
+    <br><br>
+    <table align="center" style="width:50%;text-align:center;color:black;font-family:algerian;font-size: 20px;">
+        <tr>
+            <th></th>
+            <th>Diseases</th>
+            <th>Images</th>
+        </tr>
+        {% for disease in data.name %}
+        <tr>
+            <td>{{loop.index}}</td>
+            <td>{{disease}}</td>
+            <td><img src="{{ url_for('static', filename='images/'+crop+'/'+disease+'.jpg') }}" alt="no image" width="200" height="150"></td>
+        </tr>
+        {% endfor %}
+
+    </table><br><br><br>
+    <p style="text-align:left;font-family:algerian;color:Indigo;font-size: 20px">Preventive Measures</p>
+    <table style="font-size: 20px;">
+
+        {% for prevention in data.prevention%}
+        <tr>
+            <td>{{loop.index}}. {{prevention}}</td>
+        </tr>
+        {% endfor %}
+
+        {% else %}
+        <p> No data found </p>
+        {% endif %}
+        
+    </table>
+    <br><br>
+    <p style="font-family:algerian;color:Indigo"><a href="{{url_for('main.crop_detail', crop=crop)}}">Click for Back</a></p>
+  <a href="{{url_for('main.crop_detail', crop=crop)}}"><img src="{{url_for('static', filename='images/rice/back.jpg')}}" alt="no image" width="60" height="60"></a>
+</body>
+
+</html>
