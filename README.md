@@ -1,0 +1,2 @@
+# AGRITARGET
+crop recommendation system 
